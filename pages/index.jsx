@@ -59,9 +59,18 @@ export default function Home() {
             </div>
             <div className={styles.timer}>
               <div className={styles.timerLine}>
-                
+
               </div>
             </div>
+          </div>
+          <div className={styles.weatherPanel}>
+            <section>
+              <div className= {styles.wave1}></div>
+              <div className= {styles.wave2}></div>
+              <div className= {styles.wave3}></div>
+              <div className= {styles.wave4}></div>
+            </section>
+            
           </div>
         </div>
       </main>
