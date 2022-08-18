@@ -1,4 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Heebo:wght@100;200;300;400;500;600;700;800;900&display=swap");
 .main {
   min-height: 100vh;
   padding: 0;
@@ -28,7 +27,7 @@
   height: 20px;
   text-align: center;
   color: white;
-  font-family: "Heebo", sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 24px;
   font-weight: 400;
   margin-bottom: 40px;
@@ -38,7 +37,7 @@
   height: 60px;
   text-align: center;
   color: white;
-  font-family: "Heebo", sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 64px;
   font-weight: 500;
   margin-bottom: 25px;
@@ -70,14 +69,14 @@
 .sunRiseContainer,
 .sunsetContainer > p:first-child {
   color: white;
-  font-family: "Heebo", sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 16px;
   font-weight: 300;
 }
 .sunRiseContainer > p:last-child,
 .sunsetContainer > p:last-child {
   color: white;
-  font-family: "Heebo", sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 18px;
   font-weight: 400;
 }
@@ -90,7 +89,7 @@
   align-items: center;
   position: relative;
 }
-.timerLine {
+.timerCurve {
   width: 100%;
   height: 100%;
   text-align: center;
@@ -102,7 +101,7 @@
   transform-origin: center;
 }
 
-.timerLine::after {
+.timerCurve::after {
   content: "";
   position: absolute;
   height: 10px;
