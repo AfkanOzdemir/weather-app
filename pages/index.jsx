@@ -7,21 +7,6 @@ import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import React, { useEffect, useState } from "react";
 import moment from "moment-timezone";
-import {
-  WiCloud,
-  WiCloudyGusts,
-  WiDayCloudyGusts,
-  WiDayHail,
-  WiDayShowers,
-  WiDaySnowThunderstorm,
-  WiDaySunnyOvercast,
-  WiDaySunny,
-  WiDayWindy,
-  WiDayCloudy,
-  WiHail,
-  WiNightAltRainMix,
-  WiMoonAltWaxingGibbous6,
-} from "react-icons/wi";
 import "swiper/css";
 
 export default function Home() {
@@ -29,9 +14,10 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
   let [changeLineLocation, setLineLocation] = useState(true);
   let [changePanel, setPanel] = useState(0);
+
   const fetchData = async () => {
     await fetch(
-      "https://api.weatherapi.com/v1/forecast.json?key=3ffb882b90a94dc9bba175653221808&q=Istanbul&days=7&aqi=yes&alerts=yes"
+      `https://api.weatherapi.com/v1/forecast.json?key=3ffb882b90a94dc9bba175653221808&q=Istanbul&days=7&aqi=yes&alerts=yes`
     )
       .then(async (response) => {
         return response.json();
@@ -39,13 +25,51 @@ export default function Home() {
       .then(async (data) => {
         setUsers(data);
         setLoading(true);
-        console.log(data);
       });
   };
-  console.log(moment().format("DD MM YYYY"));
+
   useEffect(() => {
     fetchData();
   }, []);
+
+  let now = moment().format("HH");
+  const newValue = (value) => {
+    switch (value) {
+      case "6":
+        return { x: 0, y: 0 };
+      case "7":
+        return { x: 15, y: -3 };
+      case "8":
+        return { x: 30, y: -6 };
+      case "9":
+        return { x: 50, y: -10 };
+      case "10":
+        return { x: 70, y: -12 };
+      case "11":
+        return { x: 90, y: -14 };
+      case "12":
+        return { x: 110, y: -15 };
+      case "13":
+        return { x: 130, y: -15 };
+      case "14":
+        return { x: 150, y: -15 };
+      case "15":
+        return { x: 170, y: -14 };
+      case "16":
+        return { x: 190, y: -12 };
+      case "17":
+        return { x: 210, y: -10 };
+      case "18":
+        return { x: 230, y: -6 };
+      case "19":
+        return { x: 240, y: -3 };
+      case "20":
+        return { x: 250, y: 0 };
+      default:
+        return { x: 1000, y: 0 };
+    }
+  };
+  let value = newValue(now);
 
   let todayPanel = () => {
     return (
@@ -79,6 +103,7 @@ export default function Home() {
       </Swiper>
     );
   };
+
   let weekPanel = () => {
     return (
       <Swiper
@@ -111,6 +136,7 @@ export default function Home() {
       </Swiper>
     );
   };
+
   if (loading) {
     return (
       <div className={styles.container}>
@@ -143,9 +169,7 @@ export default function Home() {
             <div className={styles.weatherContent}>
               <h3 className={styles.location}>{weather.location.name}</h3>
               <h1 className={styles.degree}>{weather.current.temp_c}&deg;</h1>
-              {/* weather.current.temp_c weather.location.name */}
               <div className={styles.weatherIcons}>
-                {/* "https:" + weather.forecast.forecastday[0].day.condition.icon */}
                 {
                   <Image
                     src={"https:" + weather.current.condition.icon}
@@ -168,6 +192,12 @@ export default function Home() {
               </div>
               <div className={styles.timer}>
                 <div className={styles.timerCurve}></div>
+                <span
+                  className={styles.timeCircle}
+                  style={{
+                    transform: `translateX(${value.x}px) translateY(${value.y}px)`,
+                  }}
+                ></span>
               </div>
             </div>
             <div className={panelStyle.weatherPanel}>

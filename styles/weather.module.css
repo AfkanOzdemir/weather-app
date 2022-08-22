@@ -27,7 +27,7 @@
   height: 20px;
   text-align: center;
   color: white;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 24px;
   font-weight: 400;
   margin-bottom: 40px;
@@ -37,7 +37,7 @@
   height: 60px;
   text-align: center;
   color: white;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 64px;
   font-weight: 500;
   margin-bottom: 25px;
@@ -69,14 +69,14 @@
 .sunRiseContainer,
 .sunsetContainer > p:first-child {
   color: white;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 16px;
   font-weight: 300;
 }
 .sunRiseContainer > p:last-child,
 .sunsetContainer > p:last-child {
   color: white;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 14px;
   font-weight: 400;
 }
@@ -97,18 +97,17 @@
     transparent rgba(255, 255, 255, 0.642);
   border-radius: 75% 75% 0% 0%;
   position: relative;
-  transform-origin: center;
   top: 15px;
 }
 
-.timerCurve::after {
-  content: "";
+.timeCircle {
   position: absolute;
   height: 10px;
   width: 10px;
   background: white;
   border-radius: 100%;
-  top: 15px;
-  left: 40px;
+  top: 26px;
+  left: 56px;
   box-shadow: 0px 0px 10px gray, 0px 0px 20px white;
+  transition: all 0.5s ease;
 }
